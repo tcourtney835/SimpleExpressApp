@@ -1,0 +1,7 @@
+An error was encountered
+<br/>
+[[=locals.message]]
+<br/>
+[[=locals.error]]
+<br/>
+<a href="/">Return</a>

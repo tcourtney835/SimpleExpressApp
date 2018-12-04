@@ -1,0 +1,24 @@
+<h1>Create a New Document in Database</h1>
+<p>Complete this form and press submit.  It will post to the /simpleForm route, and save a new document in the database.</p>
+<form action="/simpleForm" method="post">
+    Title: <input name="title" type="text">
+    <br/>
+    Description: <textarea name="description"></textarea>
+    <br/>
+
+    <input type="submit" value="Submit">
+</form>
+
+<br/><hr>
+<h2>Document Saved and Returned</h2>
+<p>This is the document that came back after saving it. It comes back with a new id, along with title and description.</p>
+Title: [[=model.title]]
+<br/>
+Description: [[=model.description]]
+
+<br/><br/><hr>
+<h2>JSON Document Returned</h2>
+<p>This is the document that came back as JSON</p>
+[[=JSON.stringify(model)]]
+
+

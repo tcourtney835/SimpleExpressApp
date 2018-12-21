@@ -3,7 +3,20 @@ var Document = mongoose.model('Document');                  // load the document
 
 // render the simpleForm page
 module.exports.listDocuments = function(req, res, next) {
-    res.render('simpleForm');
+
+    // first, get all of the documents already in the database
+    Document.find({}, function(err, documents) {
+
+        if (err) {
+            return next(err);                          // if there is an error, pass it to next
+        }
+
+//        console.log("DOCUMENTS", documents);              // uncomment to view documents in console
+
+        // now render the simpleForm, and pass the documents to it
+        res.render('simpleForm', { documents: documents});
+    })
+
 };
 
 // add a new document to the database
@@ -32,8 +45,16 @@ module.exports.addDocument = function(req, res, next) {
             return next(err);
         }
 
+        // get all of the documents again, and return
+
         // since no error, render the simple form and pass it the returned document
-        res.render('simpleForm', result);
+        Document.find({}, function(err, documents) {
+            if (err) return next(err);                          // if there is an error, pass it to next
+
+            // now render the simpleForm, and pass the documents to it
+            res.render('simpleForm', { documents: documents});
+        });
+
     });
 
 }

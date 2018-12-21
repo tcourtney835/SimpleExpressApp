@@ -10,16 +10,23 @@
 </form>
 
 <br/><hr>
-<h2>Document Saved and Returned</h2>
-<p>Hi Ryan</p>
-<p>This is the document that came back after saving it. It comes back with a new id, along with title and description.</p>
-Title: [[=model.title]]
+<h2>List of All the Documents</h2>
+<p>This is the list of documents we got with Document.find()</p>
+
+[[~model.documents :document:index]]
+
+<div>
+    <b>[[= document.title ]]</b> - [[= document.description ]]
+</div>
+
+[[~]]
+
 <br/>
-Description: [[=model.description]]
-
-<br/><br/><hr>
-<h2>JSON Document Returned</h2>
-<p>This is the document that came back as JSON</p>
-[[=JSON.stringify(model)]]
-
+<br/>
+<hr>
+<font color="gray">
+    <h2>JSON Document Returned</h2>
+    <p>This is the document that came back as JSON</p>
+    [[=JSON.stringify(model)]]
+</font>
 
